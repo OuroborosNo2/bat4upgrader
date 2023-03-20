@@ -29,7 +29,7 @@ goto:eof
 :func_getPara
     ::因为无法确定自己是在哪个目录被调用，也就无法调用func_length函数,所以先获取根目录
     for /f %%t in ('chdir') do (set root=%%t)
-    if "%root:~-3%"=="bin" (set root=%root:~0,-4%)
+    if "%root:~-3%"=="bin" (set root="%root:~0,-4%")
 
     if "%1"=="" (echo "" & goto:eof)
     set tmp=""
@@ -47,6 +47,4 @@ goto:eof
     echo !tmp:~%length%!
     endlocal
 goto:eof
-
-
 
