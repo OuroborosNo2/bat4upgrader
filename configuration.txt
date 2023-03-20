@@ -1,0 +1,84 @@
+# 软件名
+# softwareName
+softwareName=中文
+
+# 版本
+version=1.0.0
+
+# 软件类型
+softwareType=1
+
+# 升级助手服务端ip地址，默认为[localhost]
+# ip address of Upgreder server, the default is [localhost]
+ip_address=localhost
+
+# 升级助手服务端端口号
+# port of Upgreder server
+port=8080
+
+# 是否属于更新，默认为[false]即新发布软件，可选为[true]
+# is update, the default is [false], optional is [true]
+is_update=false
+
+# 基目录，安装时的目标目录
+# base folder, the directory to setup to
+base_folder=D:/simulation&tttttest
+
+# 服务端文件夹地址
+# server folder address
+server_folder=Monitor/server
+
+# 服务端启动程序地址，将注册为服务
+# server app address, which would be installed as service
+server_app=Monitor/server/MonitorServer.exe
+
+# 客户端文件夹地址
+# client folder address
+client_folder=Monitor/client
+
+# -----------SERVICE---------------------------------------------------------------------
+
+# 服务名，默认为exe文件的名字
+# Default service_name is the same as the exe file.
+service_name=MonitorServer
+
+# 服务描述, 默认为“%service_name%服务端服务（由升级助手生成）”
+# Description of service, the default is "%service_name%服务端服务（由升级助手生成）"
+# service_description=MonitorServer服务端服务（由升级助手生成）
+
+# 是否将服务设置为自动启动，默认为[true], 可选为[false]
+# Whether to set the service to auto start, the default is [true], optional is [false]
+# service_auto=false
+
+# 启动服务时需要附带的参数，默认为空
+# The possible arguments while starting service, the default is null
+# service_arguments=
+
+# 允许服务与桌面交互，默认为[false]，可选为[true]
+# Allow service to interact with desktop
+# interact_with_desktop=false
+
+# 服务I/O重定向，填写文件地址，默认为空
+# Service I/O redirection, fill in the file address, the default is null
+# service_stdin=
+# service_stdout=
+# service_stderr=
+
+# 是否为32位的系统，默认[false](即64位系统), 可选为[true]
+# Is x86_32-based system, the default is [false](which means it is x64-based system), optional is [true]
+# is_x86_32=false
+
+# --------------------------------------------------------------------------------
+# 搁置
+# 服务运行的用户，默认为系统用户
+
+# 服务失败时反应
+
+# 服务依赖关系
+
+# 服务启动位置（启动后在哪个目录下工作）
+# service_startup_directory
+
+# 服务I/O时追加还是覆盖，默认为追加即[true]，可选为覆盖[false]
+# Whether append replace or while service  I/O
+# service_append=true
