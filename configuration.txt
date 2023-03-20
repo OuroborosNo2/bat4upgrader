@@ -44,7 +44,7 @@ service_name=MonitorServer
 
 # 服务描述, 默认为“%service_name%服务端服务（由升级助手生成）”
 # Description of service, the default is "%service_name%服务端服务（由升级助手生成）"
-# service_description=MonitorServer服务端服务（由升级助手生成）
+service_description=MonitorServer服务端服务（由升级助手生成）
 
 # 是否将服务设置为自动启动，默认为[true], 可选为[false]
 # Whether to set the service to auto start, the default is [true], optional is [false]

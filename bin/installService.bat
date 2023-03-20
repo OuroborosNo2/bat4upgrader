@@ -18,7 +18,7 @@ if "%service_name%"=="" (
 
 ::service_description
 for /f %%t in ('call myUtils func_getPara service_description') do (set service_description=%%t)
-if "%service_description%"=="" (set service_description=!service_name!鏈嶅姟绔湇鍔★紙鐢卞崌绾у姪鎵嬬敓鎴愶級)
+if "%service_description%"=="" (set service_description=!service_name!服务端服务（由升级助手生成）)
 
 ::service_auto
 for /f %%t in ('call myUtils func_getPara service_auto') do (set service_auto=%%t)

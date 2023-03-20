@@ -1,19 +1,19 @@
 ::sendRequest
 @echo off
 
-::è½¯ä»¶å
+::Èí¼şÃû
 for /f %%t in ('call myUtils func_getPara softwareName') do (set softwareName=%%t)
 if "%softwareName%"=="" (echo please input softwareName & goto:end)
 
-::ç‰ˆæœ¬
+::°æ±¾
 for /f %%t in ('call myUtils func_getPara version') do (set version=%%t)
 if "%version%"=="" (echo please input version & goto:end)
 
-::è½¯ä»¶ç±»å‹
+::Èí¼şÀàĞÍ
 for /f %%t in ('call myUtils func_getPara softwareType') do (set softwareType=%%t)
 if "%softwareType%"=="" (echo please input softwareType & goto:end)
 
-::ipï¼Œé»˜è®¤ä¸ºlocalhost
+::ip£¬Ä¬ÈÏÎªlocalhost
 for /f %%t in ('call myUtils func_getPara ip_address') do (set ip_address=%%t)
 if "%ip_address%"=="" (set ip_address=localhost)
 
@@ -21,11 +21,11 @@ if "%ip_address%"=="" (set ip_address=localhost)
 for /f %%t in ('call myUtils func_getPara port') do (set port=%%t)
 if "%port%"=="" (echo please input port & goto:end)
 
-::æ˜¯å¦å±äºæ›´æ–°ï¼Œé»˜è®¤ä¸ºfalse
+::ÊÇ·ñÊôÓÚ¸üĞÂ£¬Ä¬ÈÏÎªfalse
 for /f %%t in ('call myUtils func_getPara is_update') do (set is_update=%%t)
 if not "%is_update%"=="true" (set is_update=false)
 
-::å‘è¯·æ±‚
+::·¢ÇëÇó
 if "%is_update%"=="true" (
 curl "http://%ip_address%:%port%/bat/download/%softwareName%/%version%/%softwareType%") else (
 curl "http://%ip_address%:%port%/bat/update/%softwareName%/%version%/%softwareType%")
