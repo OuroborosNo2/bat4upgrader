@@ -42,10 +42,13 @@ goto:eof
     if "%tmp%"=="" (echo "" & goto:eof)
     for /f %%t in ('call %root%\bin\myUtils func_length %1') do (set /a length=%%t)
     setlocal enabledelayedexpansion
+    ::将斜杠替换为反斜杠
+    set tmp=!tmp:/=\!
     ::加上=的长度
     set /a length+=1
     ::如果内容有特殊符号，传出去后会报错，所以要加引号，并且外面不能用%%~ft，否则会自动去掉双引号
-    echo "!tmp:~%length%!"
+    ::补充：其实变量延迟可以解决这个问题，不管有没有双引号
+    echo !tmp:~%length%!
     endlocal
 goto:eof
 

@@ -1,22 +1,22 @@
 ::install service
 @echo off
 
-call D:\Code\Upgrader\exe4jtest\stimulation\bin\myUtils func_getPara client_folder
+for /f %%t in ('call myUtils func_getPara base_folder') do (echo %%t)
 
 @REM setlocal enabledelayedexpansion
 
 @REM set tmp=""
 
 @REM for /f "tokens=1,* delims=" %%i in ('findstr "^softwareName=[\u4E00-\u9FA5\uFF08\uFF09A-Za-z0-9_./\\]*" .\configuration.txt') do (
-@REM         ::°´×îºóÒ»¸öÎª×¼
+@REM         ::ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Îª×¼
 @REM         set tmp=%%i
 @REM         echo %%i
-@REM         echo ²éµ½ÁË
+@REM         echo ï¿½éµ½ï¿½ï¿½
 @REM     )
 @REM if "%tmp%"=="""" (echo ""& goto:eof)
-@REM set compare=ÖÐÎÄ\^
+@REM set compare=ï¿½ï¿½ï¿½ï¿½\^
 @REM echo %compare%
-@REM if "%tmp%"=="%compare%" (echo µÈÓÚ)
+@REM if "%tmp%"=="%compare%" (echo ï¿½ï¿½ï¿½ï¿½)
 @REM echo yes
 
 :end

@@ -22,7 +22,7 @@ is_update=false
 
 # 基目录，安装时的目标目录
 # base folder, the directory to setup to
-base_folder=D:/simulation&tttttest
+base_folder=D:/simulation/MW&DqAKRUtfW&1fXQVEt+Q==@2@1.0.0
 
 # 服务端文件夹地址
 # server folder address

@@ -1,25 +1,25 @@
 ::start service
 @echo off
 
-::¶ÁÅäÖÃÎÄ¼þ£¬Ä¬ÈÏÖµÐ´ËÀÔÚÕâÀï
+::ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ÖµÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-::È¡·þÎñÃû£¬Ä¬ÈÏÎªexeÃû
+::È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îªexeï¿½ï¿½
 if not "%1"=="" (set service_name=%1) else (
     for /f %%t in ('call myUtils func_getPara service_name') do (set service_name=%%t)
-    if "%service_name%"=="""" (
-        ::È¡·þÎñ¶ËÆô¶¯³ÌÐòµØÖ·
+    if "%service_name%"=="" (
+        ::È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
         for /f %%t in ('call myUtils func_getPara server_app') do (set server_app=%%t)
-        if "%server_app%"=="""" (echo please input [server_app] and [service_name] & goto:end)
+        if "%server_app%"=="" (echo please input [server_app] and [service_name] & goto:end)
         for /f %%t in ("%server_app%") do (set service_name=%%~nt)
     )
 )
 
-::È¡ÏµÍ³Î»Êý
+::È¡ÏµÍ³Î»ï¿½ï¿½
 for /f %%t in ('call myUtils func_getPara is_x86_32') do (set is_x86_32=%%t)
-if "%is_x86_32%"=="""" (set is_x86_32=false)
+if "%is_x86_32%"=="" (set is_x86_32=false)
 
-if "%is_x86_32%"=="false" (nssm-2.24\win64\nssm start %service_name%
-) else (nssm-2.24\win32\nssm start %service_name%)
+if "%is_x86_32%"=="false" (nssm-2.24\win64\nssm start "%service_name%"
+) else (nssm-2.24\win32\nssm start "%service_name%")
 
 
 :end
