@@ -32,19 +32,20 @@ goto:eof
     if "%root:~-3%"=="bin" (set root="%root:~0,-4%")
 
     if "%1"=="" (echo "" & goto:eof)
-    set tmp=""
+    set tmp=
     ::[\u4E00-\u9FA5A-Za-z0-9_]*$ 正则表达式，以若干中、英、数、下划线结尾的字符串  "^%1=[\u4E00-\u9FA5\uFF08\uFF09A-Za-z0-9_./\\]*"
     for /f %%i in ('findstr "^%1=" %root%\configuration.txt') do (
         ::按最后一个为准
         set tmp=%%i
     )
     ::没找到则结束
-    if "%tmp%"=="""" (echo "" & goto:eof)
+    if "%tmp%"=="" (echo "" & goto:eof)
     for /f %%t in ('call %root%\bin\myUtils func_length %1') do (set /a length=%%t)
     setlocal enabledelayedexpansion
     ::加上=的长度
     set /a length+=1
-    echo !tmp:~%length%!
+    ::如果内容有特殊符号，传出去后会报错，所以要加引号，并且外面不能用%%~ft，否则会自动去掉双引号
+    echo "!tmp:~%length%!"
     endlocal
 goto:eof
 
