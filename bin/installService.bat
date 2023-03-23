@@ -41,10 +41,23 @@ if not "%service_stdout%"=="""" (set service_stdout=!base_folder!\!service_stdou
 for /f %%t in ('call myUtils func_getPara service_stderr') do (set service_stderr=%%t)
 if not "%service_stderr%"=="""" (set service_stderr=!base_folder!\!service_stderr!)
 
-
 ::service_append
 for /f %%t in ('call myUtils func_getPara service_append') do (set service_append=%%t)
 if not "%service_append%"=="false" (set service_append=true)
+
+::rotate_files
+for /f %%t in ('call myUtils func_getPara rotate_files') do (set rotate_files=%%t)
+if not "%rotate_files%"=="false" (set rotate_files=true)
+
+::rotate_online
+for /f %%t in ('call myUtils func_getPara rotate_online') do (set rotate_online=%%t)
+if not "%rotate_online%"=="true" (set rotate_online=false)
+
+::rotate_seconds
+for /f %%t in ('call myUtils func_getPara rotate_seconds') do (set rotate_seconds=%%t)
+
+::rotate_bytes
+for /f %%t in ('call myUtils func_getPara rotate_bytes') do (set rotate_bytes=%%t)
 
 ::is_x86_32,systemBit
 for /f %%t in ('call myUtils func_getPara is_x86_32') do (set is_x86_32=%%t)
@@ -71,7 +84,10 @@ nssm-2.24\win%systemBit%\nssm set "%service_name%" AppNoConsole 1)
 if not "%service_stdin%"=="""" (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppStdin "%service_stdin%")
 if not "%service_stdout%"=="""" (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppStdout "%service_stdout%")
 if not "%service_stderr%"=="""" (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppStderr "%service_stderr%")
-
+if not "%rotate_files%"=="false" (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppRotateFiles 1) else (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppRotateFiles 0)
+if not "%rotate_online%"=="true" (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppRotateOnline 0) else (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppRotateOnline 1)
+if not "%rotate_seconds%"=="""" (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppRotateSeconds "%rotate_seconds%")
+if not "%rotate_bytes%"=="""" (nssm-2.24\win%systemBit%\nssm set "%service_name%" AppRotateBytes "%rotate_bytes%")
 
 :end
 endlocal
