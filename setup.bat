@@ -7,7 +7,7 @@ if "%base_folder%"=="" (echo please input [base_folder] & goto:end)
 
 ::先创建文件夹，再批量移动，路径一定要加引号，否则特殊符号会导致出错
 md "%base_folder%"
-for /f %%t in ('dir/b') do (
+for /f "delims=" %%t in ('dir/b') do (
     if not "%%t"=="setup.bat" (move "%%t" "%base_folder%")
 )
 
