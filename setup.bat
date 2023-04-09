@@ -1,26 +1,29 @@
 ::setup
 @echo off
 
-::è¯»å–é…ç½®æ–‡ä»¶base_folderå­—æ®µ
+::¶ÁÈ¡ÅäÖÃÎÄ¼şbase_folder×Ö¶Î
 for /f %%t in ('call bin/myUtils func_getPara base_folder') do (set base_folder=%%~ft)
 if "%base_folder%"=="" (echo please input [base_folder] & goto:end)
 
-::å…ˆåˆ›å»ºæ–‡ä»¶å¤¹ï¼Œå†æ‰¹é‡ç§»åŠ¨ï¼Œè·¯å¾„ä¸€å®šè¦åŠ å¼•å·ï¼Œå¦åˆ™ç‰¹æ®Šç¬¦å·ä¼šå¯¼è‡´å‡ºé”™
+::ÏÈ´´½¨ÎÄ¼ş¼Ğ£¬ÔÙÅúÁ¿ÒÆ¶¯£¬Â·¾¶Ò»¶¨Òª¼ÓÒıºÅ£¬·ñÔòÌØÊâ·ûºÅ»áµ¼ÖÂ³ö´í
 md "%base_folder%"
-for /f "delims=" %%t in ('dir/b') do (
+for /f  "delims=" %%t in ('dir/b') do (
     if not "%%t"=="setup.bat" (move "%%t" "%base_folder%")
 )
+md "%base_folder%\bin"
+echo y | copy "bin" "%base_folder%\bin"
+echo y | del bin
 
-::initializeï¼Œå®‰è£…å¹¶å¯åŠ¨æœåŠ¡
-cd "%base_folder%\bin"
+::initialize£¬°²×°²¢Æô¶¯·şÎñ
+cd /d "%base_folder%\bin"
 call installService
 call startService
 
-::é€šçŸ¥å‡çº§åŠ©æ‰‹æœåŠ¡ç«¯
-for /f %%t in ('call sendRequest') do (if not "%%t"=="success" (echo ä¸å‡çº§åŠ©æ‰‹æœåŠ¡ç«¯é€šä¿¡å¤±è´¥ï¼Œè¯·æ£€æŸ¥é…ç½®æ–‡ä»¶))
+::Í¨ÖªÉı¼¶ÖúÊÖ·şÎñ¶Ë
+call sendRequest
+::for /f %%t in ('call sendRequest') do (if not "%%t"=="success" (echo ÓëÉı¼¶ÖúÊÖ·şÎñ¶ËÍ¨ĞÅÊ§°Ü£¬Çë¼ì²éÅäÖÃÎÄ¼ş))
 
 :end
 
 pause
 goto:eof
-pause

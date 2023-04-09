@@ -27,10 +27,10 @@ if not "%is_update%"=="true" (set is_update=false)
 
 ::∑¢«Î«Û
 if "%is_update%"=="true" (
-curl "http://%ip_address%:%port%/bat/download/%softwareName%/%version%/%softwareType%") else (
-curl "http://%ip_address%:%port%/bat/update/%softwareName%/%version%/%softwareType%")
-
-echo success
+set url="http://%ip_address%:%port%/bat/download/%softwareName%/%version%/%softwareType%") else (
+set url="http://%ip_address%:%port%/bat/update/%softwareName%/%version%/%softwareType%")
+::url±‡¬Î
+for /f "delims=" %%i in ('cscript  /nologo UrlEncode.vbs %url%') do curl %%~i
 
 :end
 pause
