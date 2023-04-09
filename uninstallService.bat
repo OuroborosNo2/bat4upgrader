@@ -22,6 +22,7 @@ if not "%is_x86_32%"=="true" (set is_x86_32=false)
 if "%is_x86_32%"=="false" (nssm-2.24\win64\nssm stop "%service_name%"
 ) else (nssm-2.24\win32\nssm stop "%service_name%")
 
+call ..\nginx\stop-nginx.bat
 
 ::再用vbs调用nssm 移除服务
 echo dim Wshell > uninstallService.vbs

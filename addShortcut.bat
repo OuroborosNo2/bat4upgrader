@@ -1,5 +1,5 @@
 @echo off
-cd %~dp0
+cd /d %~dp0
 set SHORTCUT=%USERPROFILE%\Desktop\Launch.url
 set TARGET="..\Launch.exe"
 for /f %%t in ("%TARGET%") do (set TARGET=%%~ft)
